@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  weather-service:
+    image: blipshare/weather-service:edge
+    build:
+      context: .
+      dockerfile: Dockerfile.prod.edge
+    container_name: weather-service
+    environment:
+      - WORKERS=2
+      - HOST=0.0.0.0
+      - PORT=9500
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro      
+    ports:
+      - 0.0.0.0:9500:9500

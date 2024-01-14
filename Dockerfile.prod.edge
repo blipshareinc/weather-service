@@ -1,0 +1,12 @@
+FROM --platform=linux/arm64/v8 alpine:edge
+
+RUN apk add --update --no-cache python3 py3-pip && ln -sf python3 /usr/bin/python
+
+COPY . /app
+
+WORKDIR /app
+
+EXPOSE $PORT
+
+CMD ["/bin/sh", "./start_app.sh", "prod"]
+

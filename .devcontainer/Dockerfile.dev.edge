@@ -1,0 +1,14 @@
+FROM --platform=linux/arm64/v8 alpine:edge
+
+RUN apk add --update --no-cache python3 py3-pip && ln -sf python3 /usr/bin/python
+
+#RUN apt-get -y update && apt install -y python3-dev
+
+COPY . /app
+
+WORKDIR /app
+
+# create virtual env and install dependencies
+RUN python3 -m venv .env
+ #   pip install --user --upgrade pip && \
+ #   pip install gunicorn
