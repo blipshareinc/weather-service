@@ -45,4 +45,4 @@ def get_hourly_forecast():
     # load the sample data and return
     api = WeatherDotGovAPI(forecast_type, lat, lon)
     data = api.fetch_data()
-    return f'Searching for: {data}'
+    return {'data': data}
